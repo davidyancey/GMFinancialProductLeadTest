@@ -45,7 +45,7 @@ namespace GMFinancialLeadTest.FunctionalTests
         {
             var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(filteredResults);
             string expected = string.Format("{0:C2}", 109.95);
-            string actual = string.Format("{0:C2}", products.FirstOrDefault().Price);
+            string actual = products.FirstOrDefault().Price.FormatAsCurrenty();
 
             Assert.That(expected == actual);
         }
