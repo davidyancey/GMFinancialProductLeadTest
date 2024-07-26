@@ -1,12 +1,10 @@
 ﻿using GMFinancialLeadTest.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GMFinancialLeadTest.UnitTests
 {
+    /// <summary>
+    /// Used for test purposes, this will return the json without the need to cross system boundaries
+    /// </summary>
     public class FakeAPIManager : IAPIManager
     {
         public async Task<string> GetAPIResults()

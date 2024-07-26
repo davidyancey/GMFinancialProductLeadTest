@@ -13,6 +13,10 @@ namespace GMFinancialLeadTest.ProductDomain
             this.fileService = fileService;
         }
 
+        /// <summary>
+        /// Get all records from API
+        /// </summary>
+        /// <returns>JSON String</returns>
         public async Task<string> GetAll()
         {
             string results = await apiManager.GetAPIResults();
@@ -20,6 +24,15 @@ namespace GMFinancialLeadTest.ProductDomain
             return results;
         }
 
+        /// <summary>
+        /// Get filtered recrods from API
+        /// </summary>
+        /// <param name="where">
+        ///     Predicate to be used as 
+        ///     Get(x => x.Rating.Rate >= 3 && x.Rating.Count >= 100)
+        ///     This places the control of the query of the data with who is using the data
+        /// </param>
+        /// <returns>JSON String</returns>
         public async Task<string> Get(Func<Product, bool> @where)
         {
             string content = await apiManager.GetAPIResults();
@@ -34,6 +47,16 @@ namespace GMFinancialLeadTest.ProductDomain
 
         }
 
+        /// <summary>
+        /// Applies a filter to a previously retrieved record set as json
+        /// </summary>
+        /// <param name="content">JSON</param>
+        /// <param name="where">
+        ///     Predicate to be used as 
+        ///     Get(x => x.Rating.Rate >= 3 && x.Rating.Count >= 100)
+        ///     This places the control of the query of the data with who is using the data
+        /// </param>
+        /// <returns>JSON string</returns>
         public async Task<string> Filter(string content, Func<Product, bool> @where)
         {
             var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(content);
@@ -45,6 +68,10 @@ namespace GMFinancialLeadTest.ProductDomain
             return results;
         }
 
+        /// <summary>
+        /// Calls the Fileservice to save the results to the filesystem.
+        /// </summary>
+        /// <param name="results"></param>
         public void SaveResults(string results)
         {
             fileService.Write(results);

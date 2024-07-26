@@ -1,11 +1,14 @@
 ﻿namespace GMFinancialLeadTest.Core
 {
-    public class APIManager : IAPIManager
+    /// <summary>
+    /// Manages connection to the API through an HTTPClient
+    /// </summary>
+    public class HTTPClientAPIManager : IAPIManager
     {
         private readonly string url;
         readonly HttpClient httpClient;
 
-        public APIManager(string url)
+        public HTTPClientAPIManager(string url)
         {
             this.url = url;
             httpClient = new HttpClient();

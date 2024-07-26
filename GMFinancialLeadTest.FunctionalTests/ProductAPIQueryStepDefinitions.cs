@@ -9,7 +9,7 @@ namespace GMFinancialLeadTest.FunctionalTests
     [Binding]
     public class ProductAPIQueryStepDefinitions
     {
-        private APIManager apiManager;
+        private HTTPClientAPIManager apiManager;
         private ProductService productService;
         private FileService fileService;
         private string results;
@@ -21,7 +21,7 @@ namespace GMFinancialLeadTest.FunctionalTests
         public void GivenAllProductsAreRequested()
         {
             var apiUrl = "https://fakestoreapi.com/products";
-            apiManager = new APIManager(apiUrl);
+            apiManager = new HTTPClientAPIManager(apiUrl);
             fileService = new FileService(fileName, filePath);
             productService = new ProductService(apiManager, fileService);            
         }

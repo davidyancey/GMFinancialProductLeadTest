@@ -12,8 +12,6 @@
         {
             get 
             {
-                double tempValue = Convert.ToDouble(price);
-                //return string.Format("{0:C2}", tempValue);
                 return price;
             }
             set 

@@ -13,16 +13,11 @@
 
         public void Write(string content)
         {
-            fileWriter(content);
-        }
-
-        private void fileWriter(string content)
-        {
             string fullFilePath = Path.Combine(_filePath, _fileName);
             if (!Directory.Exists(_filePath))
                 Directory.CreateDirectory(_filePath);
 
             File.WriteAllText(fullFilePath, content);
-        }
+        }       
     }
 }
