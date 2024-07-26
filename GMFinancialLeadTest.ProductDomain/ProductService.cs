@@ -17,8 +17,6 @@ namespace GMFinancialLeadTest.ProductDomain
         {
             string results = await apiManager.GetAPIResults();
             
-            saveResults(results);
-
             return results;
         }
 
@@ -31,13 +29,23 @@ namespace GMFinancialLeadTest.ProductDomain
 
             var results = JsonConvert.SerializeObject(filteredProducts);
 
-            saveResults(results);
 
             return results;
 
         }
 
-        private void saveResults(string results)
+        public async Task<string> Filter(string content, Func<Product, bool> @where)
+        {
+            var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(content);
+            var filteredProducts = products == null ? (IEnumerable<Product>)([]) : products.Where(@where);
+
+            var results = JsonConvert.SerializeObject(filteredProducts);
+
+
+            return results;
+        }
+
+        public void SaveResults(string results)
         {
             fileService.Write(results);
         }

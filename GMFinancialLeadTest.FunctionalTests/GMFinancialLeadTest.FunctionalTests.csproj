@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -23,6 +23,11 @@
     <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
     <PackageReference Include="SpecFlow" Version="3.9.74" />
     <PackageReference Include="SpecFlow.NUnit" Version="3.9.74" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GMFinancialLeadTest.Core\GMFinancialLeadTest.Core.csproj" />
+    <ProjectReference Include="..\GMFinancialLeadTest.ProductDomain\GMFinancialLeadTest.ProductDomain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GMFinancialLeadTest.Core
+﻿namespace GMFinancialLeadTest.Core
 {
     public class FileService : IFileService
     {
@@ -25,6 +19,9 @@ namespace GMFinancialLeadTest.Core
         private void fileWriter(string content)
         {
             string fullFilePath = Path.Combine(_filePath, _fileName);
+            if (!Directory.Exists(_filePath))
+                Directory.CreateDirectory(_filePath);
+
             File.WriteAllText(fullFilePath, content);
         }
     }
